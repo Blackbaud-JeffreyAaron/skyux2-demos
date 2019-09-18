@@ -1,0 +1,126 @@
+<h2
+  class="sky-section-heading"
+>
+  Standard fuzzy datepicker
+</h2>
+
+<div style="max-width: 50%">
+  <sky-datepicker>
+    <input
+      skyFuzzyDatepickerInput
+      [cannotBeFuture]="cannotBeFuture"
+      [dateFormat]="dateFormat"
+      [disabled]="disabled"
+      [maxFuzzyDate]="maxFuzzyDate"
+      [minFuzzyDate]="minFuzzyDate"
+      [skyFuzzyDatepickerInput]
+      [skyDatepickerNoValidate]="noValidate"
+      [startingDay]="startingDay"
+      [yearRequired]="yearRequired"
+      [(ngModel)]="selectedDate"
+      #date="ngModel"
+    />
+  </sky-datepicker>
+
+  <p *ngIf="date.errors && date.errors.skyFuzzyDate && (date.dirty || date.touched)" class="sky-error-label">
+    <span *ngIf="date.errors.skyFuzzyDate?.invalid">
+      Please enter a valid date.
+    </span>
+    <span *ngIf="date.errors.skyFuzzyDate?.yearRequired">
+      Please select a year.
+    </span>
+    <span *ngIf="date.errors.skyFuzzyDate?.cannotBeFuture">
+      Date cannot be in the future.
+    </span>
+    <span *ngIf="date.errors.skyFuzzyDate?.maxFuzzyDate">
+      The current date is beyond the maximum allowed date.
+    </span>
+    <span *ngIf="date.errors.skyFuzzyDate?.minFuzzyDate">
+      The current date is before the minimum allowed date.
+    </span>
+  </p>
+</div>
+
+<p>
+  Selected fuzzy date is {{ selectedDateForDisplay }}
+</p>
+
+<h2
+  class="sky-section-heading"
+>
+  Reactive form fuzzy datepicker
+</h2>
+
+<form
+  novalidate
+  style="max-width: 50%"
+  [formGroup]="reactiveForm"
+>
+  <sky-datepicker>
+    <input
+      formControlName="selectedDate"
+      skyFuzzyDatepickerInput
+      [dateFormat]="dateFormat"
+      [maxFuzzyDate]="maxFuzzyDate"
+      [minFuzzyDate]="minFuzzyDate"
+      [skyFuzzyDatepickerInput]
+      [skyDatepickerNoValidate]="noValidate"
+      [startingDay]="startingDay"
+      [yearRequired]="yearRequired"
+    />
+  </sky-datepicker>
+</form>
+
+<p>
+  Reactive form selected fuzzy date is {{ reactiveFormSelectedDateForDisplay }}
+</p>
+
+<p *ngIf="reactiveDate.errors && (reactiveDate.dirty || reactiveDate.touched)" class="sky-error-label">
+  <span *ngIf="reactiveDate.errors.skyFuzzyDate?.invalid">
+    Please enter a valid date.
+  </span>
+  <span *ngIf="reactiveDate.errors.skyFuzzyDate?.yearRequired">
+    Please select a year.
+  </span>
+  <span *ngIf="reactiveDate.errors.skyFuzzyDate?.cannotBeFuture">
+    Date cannot be in the future.
+  </span>
+  <span *ngIf="reactiveDate.errors.skyFuzzyDate?.maxFuzzyDate">
+    The current date is beyond the maximum allowed date.
+  </span>
+  <span *ngIf="reactiveDate.errors.skyFuzzyDate?.minFuzzyDate">
+    The current date is before the minimum allowed date.
+  </span>
+  <span *ngIf="reactiveDate.errors.required">
+    Date is required. Enter a value.
+  </span>
+</p>
+
+<p>
+  <button
+    class="sky-btn sky-btn-secondary"
+    (click)="clearSelectedDates()">
+    Clear selected dates
+  </button>
+  <button
+    class="sky-btn"
+    type="button"
+    (click)="setMinMaxDates()"
+  >
+    Set min and max dates
+  </button>
+  <button
+    class="sky-btn"
+    type="button"
+    (click)="toggleYearRequired()"
+  >
+    Toggle year required
+  </button>
+  <button
+    class="sky-btn"
+    type="button"
+    (click)="toggleCannotBeFuture()"
+  >
+    Toggle cannot be in cannot be in future
+  </button>
+</p>

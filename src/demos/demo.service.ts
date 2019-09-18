@@ -13,6 +13,7 @@ import {
   SkyColorpickerDemoComponent,
   SkyConfirmDemoComponent,
   SkyDatepickerDemoComponent,
+  SkyFuzzyDatepickerDemoComponent,
   SkyDefinitionListDemoComponent,
   SkyDropdownDemoComponent,
   SkyEmailValidationDemoComponent,
@@ -249,6 +250,22 @@ export class SkyDemoService {
           fileContents: require('!!raw-loader!./datepicker/datepicker-demo.component.ts'),
           componentName: 'SkyDatepickerDemoComponent',
           bootstrapSelector: 'sky-datepicker-demo'
+        }
+      ]
+    },
+    {
+      name: 'Fuzzy datepicker',
+      component: SkyFuzzyDatepickerDemoComponent,
+      files: [
+        {
+          name: 'fuzzy-datepicker-demo.component.html',
+          fileContents: require('!!raw-loader!./datepicker/fuzzy-datepicker-demo.component.html')
+        },
+        {
+          name: 'fuzzy-datepicker-demo.component.ts',
+          fileContents: require('!!raw-loader!./datepicker/fuzzy-datepicker-demo.component.ts'),
+          componentName: 'SkyFuzzyDatepickerDemoComponent',
+          bootstrapSelector: 'sky-fuzzy-datepicker-demo'
         }
       ]
     },
